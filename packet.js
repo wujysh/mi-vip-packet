@@ -15,7 +15,7 @@ headers = {
 };
 
 function grabPacket(pid, sid) {
-    console.log("[Grab] PID: " + pid + " - SID: " + sid + " - Time: " + new Date(Date.now()));
+    console.log("[ Grab ] PID: " + pid + " - SID: " + sid + " - Time: " + new Date(Date.now()));
     request(
         { url: 'https://web.vip.miui.com/api/packet/grab?' + querystring.stringify({ pid: pid, sid: sid }), headers: headers },
         function (error, response, body) {
@@ -43,14 +43,14 @@ function getPacketList() {
         function (error, response, body) {
             if (!error && response.statusCode == 200) {
                 var info = JSON.parse(body);
-                console.log("[Time] " + new Date(Date.now()));
-                console.log("[User] ID: " + info.id + " - Level: " + info.userLevel);
+                console.log("[ Time ] " + new Date(Date.now()));
+                console.log("[ User ] ID: " + info.id + " - Level: " + info.userLevel);
                 for (var i = 0; i < info.packets.length; i++) {
                     if (info.userLevel < info.packets[i].level) continue;
-                    if (packetStatus[info.packets[i].packetId] == 6) continue;  // OVER_DAILY_LIMIT
+                    if (packetStatus[info.packets[i].packetId] == 6 || packetStatus[info.packets[i].packetId] == 0) continue;  // OVER_DAILY_LIMIT or OK
 
                     var remainTime = info.packets[i].startTime - Date.now();
-                    console.log("[Packet] ID: " + info.packets[i].packetId + " - Name: " + info.packets[i].name + ' - Level: ' + info.packets[i].level + ' - Remain: ' + remainTime + " ms" + ((remainTime <= interval && remainTime >= 0) ? " [Grab]" : ""));
+                    console.log("[Packet] PID: " + info.packets[i].packetId + " - SID: " + info.packets[i].id + ' - Level: ' + info.packets[i].level + ' - Remain: ' + remainTime + " ms" + ((remainTime <= interval && remainTime >= 0) ? " [ Grab ]" : ""));
                     if (remainTime <= interval && remainTime >= 0) {
                         grabPacketDelay(info.packets[i].packetId, info.packets[i].id, remainTime);
                     }
