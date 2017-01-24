@@ -22,6 +22,7 @@
   },
   "homepage": "https://github.com/wujysh/mi-vip-packet/",
   "dependencies": {
-    "request": "^2.79.0"
+    "request": "^2.79.0",
+    "querystring": "^0.2.0"
   }
 }
