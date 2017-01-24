@@ -1,0 +1,27 @@
+{
+  "name": "mi-vip-packet",
+  "version": "1.0.0",
+  "description": "An automatic scipt for grabbing Xiaomi VIP Packets 2017",
+  "main": "packet.js",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/wujysh/mi-vip-packet.git"
+  },
+  "keywords": [
+    "Xiaomi",
+    "MI",
+    "VIP",
+    "Packet",
+    "小米",
+    "红包"
+  ],
+  "author": "Jiaye Wu",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/wujysh/mi-vip-packet/issues"
+  },
+  "homepage": "https://github.com/wujysh/mi-vip-packet/",
+  "dependencies": {
+    "request": "^2.79.0"
+  }
+}
