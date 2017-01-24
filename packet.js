@@ -39,7 +39,7 @@ function grabPacketDelay(pid, sid, time) {
 
 function getPacketList() {
     request(
-        {url: 'https://web.vip.miui.com/api/packet/list', headers: headers},
+        { url: 'https://web.vip.miui.com/api/packet/list', headers: headers },
         function (error, response, body) {
             if (!error && response.statusCode == 200) {
                 var info = JSON.parse(body);
